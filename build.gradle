@@ -1,0 +1,47 @@
+import com.github.spotbugs.snom.SpotBugsReport
+
+plugins {
+    id "com.github.spotbugs" version "4.6.2"
+    id 'org.springframework.boot' version '2.4.3'
+    id 'java'
+    id 'jacoco'
+}
+
+group 'org.stringconcat'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.4.3')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRun {
+    dependsOn jacocoTestReport
+    dependsOn spotbugsMain
+}
+
+bootJar {
+    dependsOn jacocoTestReport
+    dependsOn spotbugsMain
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+test {
+    useJUnitPlatform()
+}
+
+spotbugsMain {
+    reports(({
+        html {
+            enabled = true
+        }
+    } as Closure<NamedDomainObjectContainer<? extends SpotBugsReport>>))
+}
