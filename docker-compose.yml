@@ -1,9 +1,0 @@
-version: '3'
-
-services:
- ci_cd:
-  build: ./
-  command: java -jar CI_CD-1.0.jar
-  restart: unless-stopped
-  ports:
-   - "8080:8080"
