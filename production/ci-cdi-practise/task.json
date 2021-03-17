@@ -10,7 +10,7 @@
         "secretOptions": null,
         "options": {
           "awslogs-group": "/ecs/first-run-task-definition",
-          "awslogs-region": "us-east-1",
+          "awslogs-region": "us-east-2",
           "awslogs-stream-prefix": "ecs"
         }
       },
@@ -37,7 +37,7 @@
       "memoryReservation": 256,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "739411955168.dkr.ecr.us-east-1.amazonaws.com/ci-cd-practise:latest",
+      "image": "739411955168.dkr.ecr.us-east-2.amazonaws.com/ci-cd-practise:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -64,7 +64,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:739411955168:task-definition/first-run-task-definition:3",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:739411955168:task-definition/first-run-task-definition:3",
   "family": "first-run-task-definition",
   "requiresAttributes": [
     {
