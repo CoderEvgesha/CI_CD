@@ -63,6 +63,8 @@ jobs:
         # be deployed to ECS.
         chmod +x ./buildImage.sh
         chmod +x ./pushImage.sh
+        ./buildImage.sh $IMAGE_TAG
+        ./pushImage.sh $IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
     - name: Fill in the new image ID in the Amazon ECS task definition
