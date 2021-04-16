@@ -30,18 +30,32 @@ bootJar {
     dependsOn spotbugsMain
 }
 
-jacocoTestReport {
+jacocoTestCoverageVerification {
     dependsOn test
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.7
+            }
+        }
+    }
+}
+
+jacocoTestReport {
+    dependsOn jacocoTestCoverageVerification
+    reports.html.destination = file("reports/jacoco")
 }
 
 test {
     useJUnitPlatform()
+    reports.html.destination = file("reports/test")
 }
 
 spotbugsMain {
     reports(({
         html {
             enabled = true
+            destination = file("reports/spotbugs/spotbugs.html")
         }
     } as Closure<NamedDomainObjectContainer<? extends SpotBugsReport>>))
 }
