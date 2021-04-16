@@ -13,4 +13,22 @@ jobs:
                   java-version: 1.14
               - name: Build with Gradle
                 run: gradle build
+              - name: Archive test results
+                uses: actions/upload-artifact@v2
+                with:
+                  name: test-report
+                  path: reports/test
+              - name: Archive code coverage results
+                uses: actions/upload-artifact@v2
+                with:
+                  name: jacoco-report
+                  path: reports/jacoco
+              - name: Archive spotbugs results
+                uses: actions/upload-artifact@v2
+                with:
+                  name: spotbugs-report
+                  path: reports/spotbugs
+
+
+
 
