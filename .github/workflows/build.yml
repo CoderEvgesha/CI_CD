@@ -23,3 +23,12 @@ jobs:
                 with:
                   name: jacoco-report
                   path: reports/jacoco
+              - name: Archive spotbugs results
+                uses: actions/upload-artifact@v2
+                with:
+                  name: spotbugs-report
+                  path: reports/spotbugs
+
+
+
+
